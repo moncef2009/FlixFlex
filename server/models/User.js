@@ -9,9 +9,6 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    favoryFilm: [{
-        type: String,
-    }],
     favory: [{
         type: String,
     }],

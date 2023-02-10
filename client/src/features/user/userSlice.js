@@ -3,6 +3,7 @@ import userServices from './userServices';
 
 const initialState = {
     user: {},
+    favorys: [],
     isLoading: false,
     isSuccess: false,
     isError: false,
@@ -44,6 +45,63 @@ export const logout = createAsyncThunk(
         }
     }
 )
+
+export const getFavory = createAsyncThunk(
+    'auth/getFavory',
+    async (thunkAPI) => {
+        try {
+
+            return await userServices.getFavory()
+        } catch (error) {
+            const message =
+                (error.response &&
+                    error.response.data &&
+                    error.response.data.message) ||
+                error.message ||
+                error.toString()
+            return thunkAPI.rejectWithValue(message)
+        }
+    }
+)
+
+export const favory = createAsyncThunk(
+    'auth/favory',
+    async (id, thunkAPI) => {
+        try {
+            await userServices.favory(id)
+            return await userServices.getFavory()
+
+        } catch (error) {
+            const message =
+                (error.response &&
+                    error.response.data &&
+                    error.response.data.message) ||
+                error.message ||
+                error.toString()
+            return thunkAPI.rejectWithValue(message)
+        }
+    }
+)
+
+export const unfavory = createAsyncThunk(
+    'auth/unfavory',
+    async (id, thunkAPI) => {
+        try {
+            await userServices.unfavory(id)
+            return await userServices.getFavory()
+        } catch (error) {
+            const message =
+                (error.response &&
+                    error.response.data &&
+                    error.response.data.message) ||
+                error.message ||
+                error.toString()
+            return thunkAPI.rejectWithValue(message)
+        }
+    }
+)
+
+
 
 export const login = createAsyncThunk(
     'auth/login',
@@ -101,6 +159,17 @@ const userSlice = createSlice({
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload
+            })
+            .addCase(getFavory.fulfilled, (state, action) => {
+                state.favorys = action.payload
+            })
+            .addCase(favory.fulfilled, (state, action) => {
+                state.favorys = action.payload
+
+            })
+            .addCase(unfavory.fulfilled, (state, action) => {
+                state.favorys = action.payload
+
             })
     }
 })

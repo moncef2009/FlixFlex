@@ -20,8 +20,6 @@ function TvShows() {
       });
   }, [page]);
 
-  console.log(films);
-
   const getImageUrl = (url) => {
     return `https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${url}`;
   };
@@ -36,6 +34,7 @@ function TvShows() {
           image={getImageUrl(film.poster_path)}
           title={film.name}
           overviw={film.overview}
+          id={film.id}
         />
       ))}
       <Pagination count={totalPages} onChange={onPageChange} />

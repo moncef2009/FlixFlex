@@ -22,8 +22,22 @@ const login = async (userData) => {
     return response.data
 
 }
+
+const favory = async (id) => {
+    await axios.put(API_URL + `favory/${id}`)
+}
+
+const unfavory = async (id) => {
+    await axios.put(API_URL + `unfavory/${id}`)
+}
+
+const getFavory = async (id) => {
+    const response = await axios.get(API_URL + `getfavory`)
+    console.log(response.data.favory);
+    return response.data.favory
+}
 const userServices = {
-    register, logout, login
+    register, logout, login, favory, unfavory, getFavory
 }
 
 export default userServices
