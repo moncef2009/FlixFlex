@@ -66,9 +66,10 @@ export const getFavory = createAsyncThunk(
 
 export const favory = createAsyncThunk(
     'auth/favory',
-    async (id, thunkAPI) => {
+    async (name, thunkAPI) => {
         try {
-            await userServices.favory(id)
+            console.log(name);
+            await userServices.favory(name)
             return await userServices.getFavory()
 
         } catch (error) {
@@ -85,9 +86,10 @@ export const favory = createAsyncThunk(
 
 export const unfavory = createAsyncThunk(
     'auth/unfavory',
-    async (id, thunkAPI) => {
+    async (name, thunkAPI) => {
         try {
-            await userServices.unfavory(id)
+            console.log(name);
+            await userServices.unfavory(name)
             return await userServices.getFavory()
         } catch (error) {
             const message =

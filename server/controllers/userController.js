@@ -74,7 +74,7 @@ const getFavoritProduct = asyncHandler(async (req, res) => {
 const favory = asyncHandler(async (req, res) => {
     try {
         const user = await User.findByIdAndUpdate(req.user.id, {
-            $push: { favory: 'tt' + req.params.id }
+            $push: { favory: req.params.name }
         }, { new: true })
         res.json(user)
 
@@ -89,7 +89,7 @@ const unfavory = asyncHandler(async (req, res) => {
     try {
 
         const user = await User.findByIdAndUpdate(req.user.id, {
-            $pull: { favory: 'tt' + req.params.id }
+            $pull: { favory: req.params.name }
         }, { new: true })
         res.json(user)
 

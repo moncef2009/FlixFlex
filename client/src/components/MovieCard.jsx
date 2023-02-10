@@ -7,10 +7,9 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useAuth } from "../context/AuthContext";
 import { useDispatch, useSelector } from "react-redux";
-import { favory, unfavory } from "../features/user/userSlice";
+import { favory, getFavory, unfavory } from "../features/user/userSlice";
 
-export default function MovieCard({ image, title, overviw, id }) {
-  const [cfav, setCfav] = React.useState(false);
+export default function MovieCard({ image, title, overviw, name }) {
   const { favorys } = useSelector((state) => state.user);
 
   const { authed, check } = useAuth();
@@ -22,11 +21,11 @@ export default function MovieCard({ image, title, overviw, id }) {
   const dispatch = useDispatch();
 
   const fav = () => {
-    if (favorys.includes("tt" + id)) {
-      dispatch(unfavory(id));
+    if (favorys.includes(name)) {
+      dispatch(unfavory(name));
       console.log(favorys);
     } else {
-      dispatch(favory(id));
+      dispatch(favory(name));
       console.log(favorys);
     }
   };
@@ -45,7 +44,7 @@ export default function MovieCard({ image, title, overviw, id }) {
       {authed ? (
         <CardActions>
           <Button size="small" onClick={fav}>
-            {favorys.includes("tt" + id) ? "unfavory" : "favory"}
+            {favorys.includes(name) ? "unfavory" : "favory"}
           </Button>
         </CardActions>
       ) : null}

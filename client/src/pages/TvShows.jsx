@@ -34,7 +34,7 @@ function TvShows() {
           image={getImageUrl(film.poster_path)}
           title={film.name}
           overviw={film.overview}
-          id={film.id}
+          name={film.name}
         />
       ))}
       <Pagination count={totalPages} onChange={onPageChange} />

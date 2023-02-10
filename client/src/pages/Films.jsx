@@ -1,10 +1,8 @@
 import { Pagination } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
 import MovieCard from "../components/MovieCard";
-import { getFavory } from "../features/user/userSlice";
 
 function Films() {
   const [films, setFilms] = useState([]);
@@ -36,7 +34,7 @@ function Films() {
           image={getImageUrl(film.poster_path)}
           title={film.title}
           overviw={film.overview}
-          id={film.id}
+          name={film.title}
         />
       ))}
       <Pagination count={totalPages} onChange={onPageChange} />
