@@ -11,6 +11,9 @@ function NavBar() {
       <Button LinkComponent={Link} to="/tv">
         TV Show
       </Button>
+      <Button LinkComponent={Link} to="/search">
+        search
+      </Button>
     </div>
   );
 }

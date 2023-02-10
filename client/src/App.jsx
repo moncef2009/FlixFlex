@@ -8,7 +8,8 @@ import Login from "./pages/Login";
 import Films from "./pages/Films";
 import TvShows from "./pages/TvShows";
 import NavBar from "./pages/Home";
-import Favory from "./pages/Favory";
+
+import Search from "./pages/Favory";
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Films />} />
           <Route path="/tv" element={<TvShows />} />
-          {/* <Route path="/favory" element={<Favory />} /> */}
+          <Route path="/search" element={<Search />} />
         </Routes>
       </BrowserRouter>
     </div>
