@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout, rest } from "../features/user/userSlice";
 import { useAuth } from "../context/AuthContext";
@@ -16,10 +16,11 @@ export default function Header() {
   const handleClick = () => {
     dispatch(rest());
   };
-
+  const Navigate = useNavigate();
   const onClick = () => {
     dispatch(logout());
     setLogedout(false);
+    Navigate("/");
   };
 
   React.useEffect(() => {
@@ -50,9 +51,14 @@ export default function Header() {
               </Button>
             </>
           ) : (
-            <Button color="inherit" onClick={onClick}>
-              logout
-            </Button>
+            <>
+              <Button color="inherit" onClick={onClick}>
+                logout
+              </Button>
+              <Button color="inherit" LinkComponent={Link} to="/favorys">
+                favorys
+              </Button>
+            </>
           )}
         </Toolbar>
       </AppBar>

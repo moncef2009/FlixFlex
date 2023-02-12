@@ -11,6 +11,7 @@ import NavBar from "./pages/Home";
 
 import Search from "./pages/Search";
 import Favorys from "./pages/Favorys";
+import Protected from "./components/Protected";
 
 function App() {
   return (
@@ -19,7 +20,15 @@ function App() {
         <Header />
         <NavBar></NavBar>
         <Routes>
-          <Route path="/favorys" element={<Favorys />} />
+          <Route
+            path="/favorys"
+            element={
+              <Protected>
+                <Favorys />
+              </Protected>
+            }
+          />
+          {/* <Route path="/favorys" element={<Favorys />} /> */}
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Films />} />

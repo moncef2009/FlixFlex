@@ -16,7 +16,6 @@ function Favorys() {
 
   return (
     <div>
-      {/* <button onClick={() => console.log(favorys)}>ok</button> */}
       {favorys.map((favory) => (
         <Card sx={{ maxWidth: 345 }}>
           <CardMedia sx={{ height: 140 }} image={favory.image} />
