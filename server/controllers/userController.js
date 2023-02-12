@@ -56,14 +56,8 @@ const logout = asyncHandler(async (req, res) => {
 
 const getFavoritProduct = asyncHandler(async (req, res) => {
     try {
-
-
         const userFavIdis = await User.findById(req.user.id).select('favory -_id')
-
         res.status(200).json(userFavIdis)
-
-
-
     } catch (error) {
 
 
@@ -72,13 +66,12 @@ const getFavoritProduct = asyncHandler(async (req, res) => {
 })
 
 const favory = asyncHandler(async (req, res) => {
+    console.log(req.body);
     try {
         const user = await User.findByIdAndUpdate(req.user.id, {
-            $push: { favory: req.params.name }
+            $push: { favory: req.body }
         }, { new: true })
         res.json(user)
-
-
     }
     catch (error) {
         res.json({ 'error': error.message })
@@ -89,7 +82,7 @@ const unfavory = asyncHandler(async (req, res) => {
     try {
 
         const user = await User.findByIdAndUpdate(req.user.id, {
-            $pull: { favory: req.params.name }
+            $pull: { favory: req.body }
         }, { new: true })
         res.json(user)
 

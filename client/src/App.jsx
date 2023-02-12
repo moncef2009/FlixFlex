@@ -9,7 +9,8 @@ import Films from "./pages/Films";
 import TvShows from "./pages/TvShows";
 import NavBar from "./pages/Home";
 
-import Search from "./pages/Favory";
+import Search from "./pages/Search";
+import Favorys from "./pages/Favorys";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Header />
         <NavBar></NavBar>
         <Routes>
+          <Route path="/favorys" element={<Favorys />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Films />} />

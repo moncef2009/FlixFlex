@@ -34,7 +34,6 @@ function Films() {
           image={getImageUrl(film.poster_path)}
           title={film.title}
           overviw={film.overview}
-          name={film.title}
         />
       ))}
       <Pagination count={totalPages} onChange={onPageChange} />

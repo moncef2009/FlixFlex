@@ -23,12 +23,12 @@ const login = async (userData) => {
 
 }
 
-const favory = async (name) => {
-    await axios.put(API_URL + `favory/${name}`)
+const favory = async (data) => {
+    await axios.put(API_URL + `favory`, data)
 }
 
-const unfavory = async (name) => {
-    await axios.put(API_URL + `unfavory/${name}`)
+const unfavory = async (data) => {
+    await axios.put(API_URL + `unfavory`, data)
 }
 
 const getFavory = async (id) => {

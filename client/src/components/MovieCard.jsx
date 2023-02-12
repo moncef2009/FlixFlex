@@ -9,24 +9,28 @@ import { useAuth } from "../context/AuthContext";
 import { useDispatch, useSelector } from "react-redux";
 import { favory, getFavory, unfavory } from "../features/user/userSlice";
 
-export default function MovieCard({ image, title, overviw, name }) {
-  const { favorys } = useSelector((state) => state.user);
-
+export default function MovieCard({ image, title, overviw }) {
   const { authed, check } = useAuth();
 
   React.useEffect(() => {
     check();
   }, [authed]);
 
+  const data = { image, title, overviw };
+
+  React.useEffect(() => {
+    dispatch(getFavory());
+  }, []);
+
+  const { favorys } = useSelector((state) => state.user);
+
   const dispatch = useDispatch();
 
   const fav = () => {
-    if (favorys.includes(name)) {
-      dispatch(unfavory(name));
-      console.log(favorys);
+    if (favorys.some((e) => e.overviw === overviw)) {
+      dispatch(unfavory(data));
     } else {
-      dispatch(favory(name));
-      console.log(favorys);
+      dispatch(favory(data));
     }
   };
 
@@ -44,7 +48,7 @@ export default function MovieCard({ image, title, overviw, name }) {
       {authed ? (
         <CardActions>
           <Button size="small" onClick={fav}>
-            {favorys.includes(name) ? "unfavory" : "favory"}
+            {favorys.some((e) => e.overviw === overviw) ? "unfavory" : "favory"}
           </Button>
         </CardActions>
       ) : null}

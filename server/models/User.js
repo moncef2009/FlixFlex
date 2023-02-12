@@ -10,7 +10,7 @@ const userSchema = mongoose.Schema({
         required: true
     },
     favory: [{
-        type: String,
+        type: Object,
     }],
     role: {
         type: String,

@@ -68,7 +68,7 @@ export const favory = createAsyncThunk(
     'auth/favory',
     async (name, thunkAPI) => {
         try {
-            console.log(name);
+
             await userServices.favory(name)
             return await userServices.getFavory()
 

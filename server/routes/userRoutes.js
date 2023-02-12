@@ -7,7 +7,7 @@ router.post('/', register)
 router.post('/login', login)
 router.get('/logout', logout)
 router.get('/getfavory', authorization, getFavoritProduct)
-router.put('/favory/:name', authorization, favory)
-router.put('/unfavory/:name', authorization, unfavory)
+router.put('/favory', authorization, favory)
+router.put('/unfavory', authorization, unfavory)
 
 module.exports = router
