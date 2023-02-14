@@ -1,5 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import userServices from './userServices';
+import Cookies from 'js-cookie'
+
+const authed = Cookies.get('jwt')
 
 const initialState = {
     user: {},
@@ -7,7 +10,8 @@ const initialState = {
     isLoading: false,
     isSuccess: false,
     isError: false,
-    message: ''
+    message: '',
+    authed: authed ? true : false
 }
 
 export const register = createAsyncThunk(
@@ -143,6 +147,7 @@ const userSlice = createSlice({
                 state.isLoading = false
                 state.isSuccess = true
                 state.user = action.payload
+                state.authed = true
             })
             .addCase(register.rejected, (state, action) => {
                 state.isLoading = false
@@ -156,6 +161,7 @@ const userSlice = createSlice({
                 state.isLoading = false
                 state.isSuccess = true
                 state.user = action.payload
+                state.authed = true
             })
             .addCase(login.rejected, (state, action) => {
                 state.isLoading = false
@@ -164,6 +170,7 @@ const userSlice = createSlice({
             })
             .addCase(getFavory.fulfilled, (state, action) => {
                 state.favorys = action.payload
+
             })
             .addCase(favory.fulfilled, (state, action) => {
                 state.favorys = action.payload
@@ -172,6 +179,9 @@ const userSlice = createSlice({
             .addCase(unfavory.fulfilled, (state, action) => {
                 state.favorys = action.payload
 
+            })
+            .addCase(logout.fulfilled, (state, action) => {
+                state.authed = false
             })
     }
 })

@@ -1,14 +1,9 @@
-import { useEffect } from "react";
-import { useAuth } from "../context/AuthContext";
-
+import { useSelector } from "react-redux";
 import Films from "../pages/Films";
 
 const Protected = ({ children }) => {
-  const { authed, check } = useAuth();
-  useEffect(() => {
-    check();
-    console.log(authed);
-  });
+  const { authed } = useSelector((state) => state.user);
+
   if (authed) {
     return children;
   } else {

@@ -81,6 +81,7 @@ function Resgister() {
             />
             <br />
             <TextField
+              type="password"
               id="password"
               label="password"
               variant="filled"

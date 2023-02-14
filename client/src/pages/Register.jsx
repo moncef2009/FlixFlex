@@ -3,7 +3,6 @@ import { Box } from "@mui/system";
 import { useEffect, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { register, rest } from "../features/user/userSlice";
 
 function Resgister() {
@@ -25,11 +24,11 @@ function Resgister() {
     }));
   };
 
-  // useEffect(() => {
-  //   return () => {
-  //     dispatch(rest());
-  //   };
-  // }, []);
+  useEffect(() => {
+    return () => {
+      dispatch(rest());
+    };
+  }, []);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -37,6 +36,7 @@ function Resgister() {
     userData.name = state.name;
     userData.password = state.password;
     dispatch(register(userData));
+    check();
   };
 
   if (isLoading) {
@@ -84,6 +84,7 @@ function Resgister() {
             />
             <br />
             <TextField
+              type="password"
               id="password"
               label="password"
               variant="filled"

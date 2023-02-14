@@ -5,24 +5,17 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { useAuth } from "../context/AuthContext";
 import { useDispatch, useSelector } from "react-redux";
 import { favory, getFavory, unfavory } from "../features/user/userSlice";
 
 export default function MovieCard({ image, title, overviw }) {
-  const { authed, check } = useAuth();
-
-  React.useEffect(() => {
-    check();
-  }, [authed]);
-
   const data = { image, title, overviw };
 
   React.useEffect(() => {
     dispatch(getFavory());
   }, []);
 
-  const { favorys } = useSelector((state) => state.user);
+  const { favorys, authed } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
 

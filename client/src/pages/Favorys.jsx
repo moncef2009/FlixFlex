@@ -16,19 +16,23 @@ function Favorys() {
 
   return (
     <div>
-      {favorys.map((favory) => (
-        <Card sx={{ maxWidth: 345 }}>
-          <CardMedia sx={{ height: 140 }} image={favory.image} />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              {favory.title}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {favory.overviw}
-            </Typography>
-          </CardContent>
-        </Card>
-      ))}
+      {favorys.length == 0 ? (
+        <h1>Faragh</h1>
+      ) : (
+        favorys.map((favory) => (
+          <Card sx={{ maxWidth: 345 }}>
+            <CardMedia sx={{ height: 140 }} image={favory.image} />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                {favory.title}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                {favory.overviw}
+              </Typography>
+            </CardContent>
+          </Card>
+        ))
+      )}
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Register from "./pages/Register";
@@ -28,12 +28,11 @@ function App() {
               </Protected>
             }
           />
-          {/* <Route path="/favorys" element={<Favorys />} /> */}
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/" element={<Films />} />
+          <Route path="/film" element={<Films />} />
           <Route path="/tv" element={<TvShows />} />
-          <Route path="/search" element={<Search />} />
+          <Route path="/" element={<Search />} />
         </Routes>
       </BrowserRouter>
     </div>
